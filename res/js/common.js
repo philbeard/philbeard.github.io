@@ -1,5 +1,6 @@
 jQuery(document).ready(function(){
-        jQuery('#toggle').on('click', function(event) {        
-             jQuery('#csv').toggle('show');
+        jQuery('.toggle').on('click', function(event) {
+        	var id = $(this).attr("id");
+             jQuery('#'+id+"-text").toggle('show');
         });
     });

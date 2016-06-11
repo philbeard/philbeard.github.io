@@ -24,7 +24,11 @@
 	white-space: pre-line;
 }
 
-#csv {
+#csv-text {
+	display: none;
+}
+
+#pagination-text {
 	display: none;
 }
 
