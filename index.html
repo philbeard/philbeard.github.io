@@ -2,6 +2,8 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="css/display.css">
+<script type="text/javascript" src="res/js/jquery-3.0.0.min.js"></script>
+<script type="text/javascript" src="res/js/common.js"></script>
 <title>Phils Page</title>
 </head>
 <body class="body">
@@ -20,61 +22,62 @@
 </div>
 <div>
 	<h1>Useful snippets</h1>
-	<h2>CSV email script:</h2>
-	<div class="code">
+	<input type='button' id='toggle' value='CSV to Email'>
+	<div class="code" id="csv"><pre>
 	<p>
 	// array of email addresses.
-<br>	$to = array();
-<br>	
-<br>	function array2csv(array &$array)
-<br>	{
-<br>	   if (count($array) == 0) {
-<br>	     return null;
-<br>	   }
-<br>	   $df = fopen("/tmp/report_".date('Y-m-d', strtotime("-1 days")).".csv", 'w');
-<br>	   fputcsv($df, array_keys(reset($array)));
-<br>	   foreach ($array as $row) {
-<br>	      fputcsv($df, $row);
-<br>	   }
-<br>	   fclose($df);
-<br>	}
-<br>	
-<br>	function getData(){
-<br>	        $return = array();
-<br>	        $dbDetails = readConfig();
-<br>	        $table = '';
-<br>	        $query = "SELECT ";
-<br>	        $query .= "FROM ";
-<br>	        $conn = new mysqli($dbDetails[server], $dbDetails[user], $dbDetails[pass], $dbDetails[database]);
-<br>	        $result = $conn->query($query);
-<br>	        while ($row = $result->fetch_assoc()){
-<br>	                $return[] = $row;
-<br>	        }
-<br>			$conn->close();
-<br>	        return $return;
-<br>	}
-<br>	
-<br>	function emailCsv($csv_path, $body, $to = 'phil@email.co.uk', $subject = 'CSV Report data', $from = 'support@email.co.uk') {
-<br>	        $logopt = '';
-<br>	        $subject = escapeshellarg($subject);
-<br>	        $attachment_path = escapeshellarg($csv_path);
-<br>	        file_put_contents("/tmp/email.txt", $body);
-<br>	        $txtfile = escapeshellarg("/tmp/email.txt");
-<br>	        $from = escapeshellarg($from);
-<br>	        foreach($to as $singleEmail){
-<br>	                $emailto = escapeshellarg($singleEmail);
-<br>	                `/usr/local/bin/sendEmail $logopt -q -f $from -t $emailto -u $subject -a $attachment_path -o "message-file="$txtfile`;
-<br>	        }
-<br>	}
-<br>	
-<br>	$data = getData();
-<br>	
-<br>	$body = "Please see attached CSV for " . date('Y-m-d', strtotime("-1 days"));
-<br>	array2csv($data);
-<br>	
-<br>	emailCsv("/tmp/report_".date('Y-m-d', strtotime("-1 days")).".csv", $body, $to);
+	$to = array();
+	
+	function array2csv(array &$array)
+	{
+	   if (count($array) == 0) {
+	     return null;
+	   }
+	   $df = fopen("/tmp/report_".date('Y-m-d', strtotime("-1 days")).".csv", 'w');
+	   fputcsv($df, array_keys(reset($array)));
+	   foreach ($array as $row) {
+	      fputcsv($df, $row);
+	   }
+	   fclose($df);
+	}
+	
+	function getData(){
+	        $return = array();
+	        $dbDetails = readConfig();
+	        $table = '';
+	        $query = "SELECT ";
+	        $query .= "FROM ";
+	        $conn = new mysqli($dbDetails[server], $dbDetails[user], $dbDetails[pass], $dbDetails[database]);
+	        $result = $conn->query($query);
+	        while ($row = $result->fetch_assoc()){
+	                $return[] = $row;
+	        }
+			$conn->close();
+	        return $return;
+	}
+	
+	function emailCsv($csv_path, $body, $to = 'phil@email.co.uk', $subject = 'CSV Report data', $from = 'support@email.co.uk') {
+	        $logopt = '';
+	        $subject = escapeshellarg($subject);
+	        $attachment_path = escapeshellarg($csv_path);
+	        file_put_contents("/tmp/email.txt", $body);
+	        $txtfile = escapeshellarg("/tmp/email.txt");
+	        $from = escapeshellarg($from);
+	        foreach($to as $singleEmail){
+	                $emailto = escapeshellarg($singleEmail);
+	                `/usr/local/bin/sendEmail $logopt -q -f $from -t $emailto -u $subject -a $attachment_path -o "message-file="$txtfile`;
+	        }
+	}
+	
+	$data = getData();
+	
+	$body = "Please see attached CSV for " . date('Y-m-d', strtotime("-1 days"));
+	array2csv($data);
+	
+	emailCsv("/tmp/report_".date('Y-m-d', strtotime("-1 days")).".csv", $body, $to);
 	</p>
 	</div>
+	</pre>
 </div>
 </body>
 </html>

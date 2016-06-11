@@ -21,6 +21,11 @@
 	background-color: #F1F1F1;
 	width: 80%;
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	white-space: pre-line;
+}
+
+#csv {
+	display: none;
 }
 
 #diamond {
