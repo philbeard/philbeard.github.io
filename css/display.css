@@ -32,6 +32,10 @@
 	display: none;
 }
 
+#objectsort-text {
+	display: none;
+}
+
 #diamond {
 	width: 0;
 	height: 0;
