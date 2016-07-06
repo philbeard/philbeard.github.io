@@ -1,8 +1,35 @@
 @CHARSET "ISO-8859-1";
+.body {
+	background-color:#D7D2BF;
+}
+.header {
+	width: 100%;
+	height: 50px;
+	border-bottom: 3px solid;
+	border-bottom-color:#D67E5B;
+	background-color:#84B7B5;
+	text-align:center;
+	font-family:"Comic Sans MS", cursive, sans-serif;
+}
+.main_content {
+	background-color: #aaa; 
+	align-content: center;
+	text-align: center;
+}
 
-.main_content{
-	background-color:#aaa; 
-	align:center;
+.code {
+	background-color: #F1F1F1;
+	width: 80%;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	white-space: pre-line;
+}
+
+#csv-text {
+	display: none;
+}
+
+#pagination-text {
+	display: none;
 }
 
 #diamond {
