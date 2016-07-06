@@ -194,5 +194,15 @@ class App_Tool_Pagination {
 	}
 }
 </div></pre>
+<input type='button' class='toggle' id='objectsort' value='Array/Object Sort'>
+<div class="code" id="objectsort-text"><pre>
+$callback = function ($a, $b) use ($orderBy) {
+	$orderBy = 'get'. $orderBy;
+	if($a->{$orderBy}() == $b->{$orderBy}()){ return 0 ; }
+	return ($a->{$orderBy}() < $b->{$orderBy}()) ? -1 : 1;
+};
+usort($agentPerformances, $callback);
+</pre>
+</div>
 </body>
 </html>
