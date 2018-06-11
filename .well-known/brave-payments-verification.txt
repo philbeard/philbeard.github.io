@@ -1,0 +1,4 @@
+This is a Brave Payments publisher verification file.
+
+Domain: philbeard.github.io
+Token: ab916297ea6df5df4775441032e7105bf09fcde73362aceae985267b8d54069b
